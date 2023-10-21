@@ -1,0 +1,91 @@
+<!--
+=========================================================
+* Soft UI Dashboard - v1.0.7
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<%- include("includes/header.ejs") %>
+
+<body class="g-sidenav-show  bg-gray-100">
+  <%- include("includes/sidebar.ejs") %>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <%- include("includes/navbar.ejs") %>
+    <!-- End Navbar -->
+    <div class="conatainer-fluid py-1 px-3 overflow-hidden">
+      <div class="row">
+        <div class="col-12 vh-100">
+          <div class="card mx-5">
+            <div class="card-header">
+              <p class="h6 text-primary fw-bolder">Update Budget Report</p>
+            </div>
+            <div class="card-body">
+              <form action="/budget_reports" method="get">
+                <div class="row">
+               
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <select name="units" class="form-select" id="units">
+                        <option selected disabled>Select Unit</option>
+                        <!-- to be changed -->
+                        <option value="unified_command">UNIFIED COMMAND</option>
+                        <option value="afpwssus">AFPWSSUs</option>
+                        <option value="command_group(ghq proper)">COMMAND GROUP(GHQ PROPER)</option>
+                        <option value="joint_staff(ghq proper)">JOINT STAFF(GHQ PROPER)</option>
+                        <option value="personal_staff(ghq proper)">PERSONAL STAFF(GHQ PROPER)</option>
+                        <option value="special_staff(ghq proper)">SPECIAL STAFF(GHQ PROPER)</option>
+                        <option value="technical_staff(ghq proper)">TECHNICAL STAFF(GHQ PROPER)</option>
+                      </select>
+                      <label for="units">Units</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="unit_name" placeholder="name@example.com">
+                      <label for="unit_name">Office Name</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="unit_name" placeholder="name@example.com">
+                      <label for="unit_name">1st Quarter</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="unit_name" placeholder="name@example.com">
+                      <label for="unit_name">2nd Quarter</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="unit_name" placeholder="name@example.com">
+                      <label for="unit_name">3rd Quarter</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="unit_name" placeholder="name@example.com">
+                      <label for="unit_name">4th Quarter</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary mt-2 w-100">Submit Record</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <%- include("includes/settings.ejs") %>
+  <%- include("includes/footer.ejs") %>

@@ -1,0 +1,184 @@
+<!--
+=========================================================
+* Soft UI Dashboard - v1.0.7
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<%- include("includes/header.ejs") %>
+
+<body class="g-sidenav-show  bg-gray-100">
+  <%- include("includes/sidebar.ejs") %>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <%- include("includes/navbar.ejs") %>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row justify-content-end">
+        <div class="col-auto">
+          <button href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertReport">Insert Report</button>
+          <!-- <button href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertOffice">Insert Office</button> -->
+
+          <div class="modal fade" id="insertReport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form action="/budgetReports/api/budjetReportPost" method="post">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Insert Budget Report</h5>
+                    <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-floating mb-3">
+                      <select name="units" class="form-select" id="units">
+                        <option selected disabled>Select Office </option>
+                        <!-- to be changed -->
+                        <option value="unified_command">UNIFIED COMMAND</option>
+                        <option value="afpwssus">AFPWSSUs</option>
+                        <option value="command_group(ghq proper)">COMMAND GROUP(GHQ PROPER)</option>
+                        <option value="joint_staff(ghq proper)">JOINT STAFF(GHQ PROPER)</option>
+                        <option value="personal_staff(ghq proper)">PERSONAL STAFF(GHQ PROPER)</option>
+                        <option value="special_staff(ghq proper)">SPECIAL STAFF(GHQ PROPER)</option>
+                        <option value="technical_staff(ghq proper)">TECHNICAL STAFF(GHQ PROPER)</option>
+                      </select>
+                      <label for="units">UNITS</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input name="office" type="text" class="form-control" id="unit_name" placeholder="name@example.com">
+                      <label for="unit_name">Office</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                      <input name="firstQuarter" type="number" class="form-control" id="qtrly_expense" placeholder="name@example.com">
+                      <label for="qtrly_expense">1st Quarter </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input name="secondQuarter" type="number" class="form-control" id="qtrly_expense" placeholder="name@example.com">
+                      <label for="qtrly_expense">2nd Quarter</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input name="thirdQuarter" type="number" class="form-control" id="qtrly_expense" placeholder="name@example.com">
+                      <label for="qtrly_expense">3rd Quarter</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input name="fourthQuarter" type="number" class="form-control" id="qtrly_expense" placeholder="name@example.com">
+                      <label for="qtrly_expense">4th Quarter</label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Insert Report</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal fade" id="insertOffice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form action="" method="post">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Office Name</h5>
+                    <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="unit_name" placeholder="name@example.com">
+                      <label for="unit_name">Insert Office</label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Insert Office</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <% for(var i = 0; i < budgetData.length; i++) { %>
+          <div class="card mb-4">
+            <div class="card-header">
+              <div class="d-flex px-2 py-1">
+                <div class="d-flex flex-column justify-content-center">
+                  <h2 class="mb-0 text-sm"><%= budgetData[i]._id%></h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">UNITS/OFFICE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">1ST QTR</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2ND QTR</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">3RD QTR</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">4TH QTR</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">GRAND TOTAL</th>
+                      <th class="text-secondary opacity-7"></th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for( let j = 0; j < budgetData[i].id.length; j++ ) { %>
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm"><%= budgetData[i].offices[j]%></h6>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><%= budgetData[i].firstQuarter[j]%></p>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <p class="text-xs font-weight-bold mb-0"><%= budgetData[i].secondQuarter[j]%></p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0"><%= budgetData[i].thirdQuarter[j]%></p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0"><%= budgetData[i].fourthQuarter[j]%></p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">#</p>
+                      </td>
+                      <td class="align-middle">
+                        <a href="/edit_budget_report" class="text-secondary font-weight-bold text-xs delete" data-toggle="tooltip" data-original-title="Edit user">
+                          Edit
+                        </a>
+                      </td>
+                      <td class="align-middle">
+                        <form action="/budgetReports/api/budjetReportDelete/<%= budgetData[i].id[j] %> " method="GET">
+                          <button type="post" class="btn btn-primary">Delete</button>
+                        </form>
+                      </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include("includes/settings.ejs") %>
+  <%- include("includes/footer.ejs") %>
